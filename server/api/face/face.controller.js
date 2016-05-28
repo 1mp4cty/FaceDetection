@@ -1,5 +1,5 @@
 var sqldb = require('../../sqldb')
-var Day = sqldb.day;
+var Face = sqldb.Face;
 
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
@@ -10,15 +10,15 @@ function handleError(res, statusCode) {
 
 exports.index = function(req, res, next){
   var id = req.params.id;
-  Day.findAll({
+  Face.findAll({
     where: {
       teacher_id: id
     },
     limit: 10,
     order: 'createdAt DESC'
   })
-    .then(function (days) {
-      res.status(200).json(days);
+    .then(function (Faces) {
+      res.status(200).json(Faces);
       return null;
     })
     .catch(function(err) {
@@ -29,13 +29,13 @@ exports.index = function(req, res, next){
 }
 
 exports.create = function (req, res, next) {
-  var newDay = Day.build(req.body)
-  newDay.save()
+  var newFace = Face.build(req.body)
+  newFace.save()
     .then(function() {
       res.json({ message: 'Success' })
       return null
     }).catch(function(err) {
-      console.log('err in newDay.save()',err)
+      console.log('err in newFace.save()',err)
       handleError(res)
       return null
     });
@@ -45,7 +45,7 @@ exports.update = function (req, res, next) {
   delete req.body.createdAt
   delete req.body.updatedAt
   req.body.setDataValue('photo', req.file.originalname)
-  Day.update(req.body, {
+  Face.update(req.body, {
     where: {
       id: req.params.id
     }
@@ -53,7 +53,7 @@ exports.update = function (req, res, next) {
     res.json({ message: 'Success' })
     return null
   }).catch(function(err) {
-    console.log('err in Day.update()',err)
+    console.log('err in Face.update()',err)
     handleError(res);
     return null
   });
@@ -61,7 +61,7 @@ exports.update = function (req, res, next) {
 
 exports.destroy = function (req, res, next) {
   var id = req.params.id;
-  Day.destroy({
+  Face.destroy({
     where:{
       id: id
     }
