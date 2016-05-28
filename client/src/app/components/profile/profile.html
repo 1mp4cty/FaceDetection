@@ -65,14 +65,19 @@
         </div>
         <div class="col-sm-9" ng-show="PC.tab === 4">
             <div>
-                <img data-ng-src="http://previews.123rf.com/images/lenm/lenm1301/lenm130100058/17430005-Illustration-of-a-Kid-Sleeping-in-Class-Stock-Illustration-sleeping-children.jpg" style="width: 500px">
+                <img data-ng-src="http://localhost/tmp.jpg" style="width: 100%">
+                <a ng-repeat="face in PC.faces" class = "box" id="box{{$index}}"
+                    style=" left:{{face.faceRectangle.left - face.faceRectangle.width/2}}px;
+                            top:{{face.faceRectangle.top - face.faceRectangle.height / 2}}px;
+                            height: {{face.faceRectangle.height}}px;
+                            width:{{face.faceRectangle.width}}px"/>
             </div>
             <br>
             <button type="button" class="btn  btn-primary" ng-click="PC.tab = 3">Буцах</button>
             <span style="display:inline-block; width: 320px;"></span>
             <button ng-disabled="PC.day.photo" type="button" class="btn  btn-primary" ng-click="PC.tab = 3; PC.day.photo = 1">Зураг нэмэх</button>
             <br>
-            <table class="table table-condensed ">
+            <table class="table table-condensed">
                 <thead>
                     <tr>
                         <th style="width: 200px">Овог</th>

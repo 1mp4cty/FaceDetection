@@ -107,16 +107,48 @@
         }]
     };
 
+    var face = [{
+        faceId: "4e11e7b0-761d-444b-99f5-a430cf8a8b66",
+        faceRectangle: {
+            width: 201,
+            height: 201,
+            left: 551,
+            top: 166
+        },
+        lname: "",
+        studId: ""
+    }, {
+        faceId: "87ae1fdc-cb63-4e6e-a3c9-612ed917d41a",
+        faceRectangle: {
+            width: 186,
+            height: 186,
+            left: 169,
+            top: 186
+        },
+        lname: "",
+        studId: ""
+    }, {
+        faceId: "bb68f759-af3c-483c-abf9-1eec523c26c5",
+        faceRectangle: {
+            width: 125,
+            height: 125,
+            left: 416,
+            top: 353
+        },
+        lname: "",
+        studId: ""
+    }];
+
     /** @ngInject */
     function ProfileController(send, $log) {
         var vm = this;
-        vm.user = stu;
+        vm.user = tea;
         vm.tab = vm.user.type;
-        if (vm.tab === 1){
+        vm.faces = face;
+        if (vm.tab === 1) {
             vm.lesson = vm.user.lessons[0];
             vm.day = vm.user.lessons[0].days[0];
-        }
-        else {
+        } else {
             vm.lesson = vm.user.lessons[0];
         }
     }

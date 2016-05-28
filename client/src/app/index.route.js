@@ -46,7 +46,8 @@
         url: 'profile/',
         templateUrl: 'app/components/profile/profile.html',
         controller: 'ProfileController',
-        controllerAs: 'PC'
+        controllerAs: 'PC',
+		styleUrls: ['app/components/profile/profile.scss']
         // resolve: {
         //   login: onlyLogged
         // }

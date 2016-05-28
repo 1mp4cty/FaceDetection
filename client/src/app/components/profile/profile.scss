@@ -1,0 +1,25 @@
+.box
+{
+	position: absolute;
+	display: inline-block;
+	z-index: 999;
+}
+
+.box input
+{
+	visibility: hidden;
+	max-width: 95%; 
+	position: relative;
+}
+
+.box:hover
+{
+	border-width: 4px;
+	border-color: grey;
+	border-style: solid;
+}
+
+.box:hover input
+{
+	visibility: visible;
+}
