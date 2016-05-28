@@ -1,0 +1,147 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <div>
+                <img data-ng-src="http://blog.ramboll.com/fehmarnbelt/wp-content/themes/ramboll2/images/profile-img.jpg" style="width: 100%">
+            </div>
+            <span class="h5">{{PC.user.fName}} {{PC.user.lName}}</span>
+            <p ng-if="PC.user.type === 1" class="text-uppercase">Багш</p>
+            <p ng-if="PC.user.type === 2" class="text-uppercase">Оюутан</p>
+            <hr>
+            <div>
+                <small class="bold text-uppercase">About</small>
+                <div ng-if="PC.user.about">
+                    <p> {{PC.user.about}} </p>
+                </div>
+                <div ng-if="!PC.user.about">
+                    <p> Doesn't have any data yet </p>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <!--teacher-->
+        <div class="col-sm-9" ng-show="PC.tab === 1">
+            <table class="table table-condensed ">
+                <thead>
+                    <tr>
+                        <th style="width: 200px">Хичээлийн нэр</th>
+                        <th style="width: 200px">Оюутны тоо</th>
+                        <th style="width: 100px">Кредит</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="lesson in PC.user.lessons">
+                        <td>{{lesson.name}}</td>
+                        <td>{{lesson.number}}</td>
+                        <td>{{lesson.credit + ' кр'}}</td>
+                        <td>
+                            <button type="button" class="btn  btn-primary" ng-click="PC.tab = 3; PC.lesson = lesson">Дараах</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-9" ng-show="PC.tab === 3">
+            <table class="table table-condensed ">
+                <thead>
+                    <tr>
+                        <th style="width: 200px">Он сар өдөр</th>
+                        <th style="width: 200px">Төрөл</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="day in PC.lesson.days">
+                        <td>{{day.date}}</td>
+                        <td>{{day.type}}</td>
+                        <td>
+                            <button type="button" class="btn  btn-primary" ng-click="PC.tab = 4; PC.day = day">Ирц харах</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn  btn-primary" ng-click="PC.tab = 1">Буцах</button>
+        </div>
+        <div class="col-sm-9" ng-show="PC.tab === 4">
+            <div>
+                <img data-ng-src="http://previews.123rf.com/images/lenm/lenm1301/lenm130100058/17430005-Illustration-of-a-Kid-Sleeping-in-Class-Stock-Illustration-sleeping-children.jpg" style="width: 500px">
+            </div>
+            <br>
+            <button type="button" class="btn  btn-primary" ng-click="PC.tab = 3">Буцах</button>
+            <span style="display:inline-block; width: 320px;"></span>
+            <button ng-disabled="PC.day.photo" type="button" class="btn  btn-primary" ng-click="PC.tab = 3; PC.day.photo = 1">Зураг нэмэх</button>
+            <br>
+            <table class="table table-condensed ">
+                <thead>
+                    <tr>
+                        <th style="width: 200px">Овог</th>
+                        <th style="width: 200px">Нэр</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="stud in PC.day.students">
+                        <td>{{stud.lName}}</td>
+                        <td>{{stud.fName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--student-->
+        <div class="col-sm-9" ng-show="PC.tab === 2">
+            <table class="table table-condensed ">
+                <thead>
+                    <tr>
+                        <th style="width: 200px">Хичээлийн нэр</th>
+                        <th style="width: 200px">Багшийн нэр</th>
+                        <th style="width: 100px">Кредит</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="lesson in PC.user.lessons">
+                        <td>{{lesson.name}}</td>
+                        <td>{{lesson.teacher}}</td>
+                        <td>{{lesson.credit + ' кр'}}</td>
+                        <td>
+                            <button type="button" class="btn  btn-primary" ng-click="PC.tab = 5; PC.lesson = lesson">Дараах</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-sm-9" ng-show="PC.tab === 5">
+            <table class="table table-condensed ">
+                <thead>
+                    <tr>
+                        <th style="width: 200px">Он сар өдөр</th>
+                        <th style="width: 200px">Төрөл</th>
+                        <th style="width: 200px">Ирц</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="day in PC.lesson.days">
+                        <td>{{day.date}}</td>
+                        <td>{{day.type}}</td>
+                        <td>{{day.status}}</td>
+                        <td>
+                            <button ng-disabled="day.status === 'ирсэн'" type="button" class="btn  btn-primary" ng-click="PC.tab = 6; PC.day = day">Таг-лах</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn  btn-primary" ng-click="PC.tab = 2">Буцах</button>
+        </div>
+        <div class="col-sm-9" ng-show="PC.tab === 6">
+            <div>
+                <img ng-show="PC.day.photo" data-ng-src="http://previews.123rf.com/images/lenm/lenm1301/lenm130100058/17430005-Illustration-of-a-Kid-Sleeping-in-Class-Stock-Illustration-sleeping-children.jpg" style="width: 500px">
+                <img ng-show="!PC.day.photo" data-ng-src="https://3.bp.blogspot.com/-zP87C2q9yog/UVopoHY30SI/AAAAAAAAE5k/AIyPvrpGLn8/s1600/picture_not_available.png" style="width: 500px">
+            </div>
+            <br>
+            <button type="button" class="btn  btn-primary" ng-click="PC.tab = 5">Буцах</button>
+            <span style="display:inline-block; width: 320px;"></span>
+            <button ng-disabled="!PC.day.photo" type="button" class="btn  btn-primary" ng-click="PC.tab = 5; PC.day.status = 'ирсэн'">Хадгалах</button>
+        </div>
+    </div>
+</div>
