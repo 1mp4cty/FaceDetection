@@ -110,30 +110,60 @@
     var face = [{
         faceId: "4e11e7b0-761d-444b-99f5-a430cf8a8b66",
         faceRectangle: {
-            width: 201,
-            height: 201,
-            left: 551,
-            top: 166
+            top:56.06944444444444,
+            left:15.111111111111114,
+            width:10.629629629629628,
+            height:13.824845679012345
         },
         lname: "",
         studId: ""
     }, {
         faceId: "87ae1fdc-cb63-4e6e-a3c9-612ed917d41a",
         faceRectangle: {
-            width: 186,
-            height: 186,
-            left: 169,
-            top: 186
+            top:47.78417107583773,
+            left:66.51851851851852,
+            width:9.814814814814815,
+            height:12.765101410934744
         },
         lname: "",
         studId: ""
     }, {
         faceId: "bb68f759-af3c-483c-abf9-1eec523c26c5",
         faceRectangle: {
-            width: 125,
-            height: 125,
-            left: 416,
-            top: 353
+            top:46.772597001763664,
+            left:37.629629629629626,
+            width:7.51851851851852,
+            height:9.77854938271605
+        },
+        lname: "",
+        studId: ""
+    }, {
+        faceId: "bb68f759-af3c-483c-abf9-1eec523c26c5",
+        faceRectangle: {
+            top:48.69940476190476,
+            left:89.48148148148148,
+            width:6.481481481481483,
+            height:8.429783950617285
+        },
+        lname: "",
+        studId: ""
+    }, {
+        faceId: "bb68f759-af3c-483c-abf9-1eec523c26c5",
+        faceRectangle: {
+            top:42.629960317460316,
+            left:13.333333333333334,
+            width:5.740740740740741,
+            height:7.466380070546738
+        },
+        lname: "",
+        studId: ""
+    }, {
+        faceId: "bb68f759-af3c-483c-abf9-1eec523c26c5",
+        faceRectangle: {
+            top:47.06161816578483,
+            left:48.7037037037037,
+            width:5.481481481481482,
+            height:7.129188712522046
         },
         lname: "",
         studId: ""

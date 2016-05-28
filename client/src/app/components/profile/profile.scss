@@ -23,3 +23,16 @@
 {
 	visibility: visible;
 }
+
+.img_container {
+    display: inline-block;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 32px;
+    width: 500px;
+    min-width: 400px;
+    vertical-align: middle;
+    text-align: center;
+    position: relative;
+}

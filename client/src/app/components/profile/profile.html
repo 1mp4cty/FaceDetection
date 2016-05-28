@@ -64,13 +64,13 @@
             <button type="button" class="btn  btn-primary" ng-click="PC.tab = 1">Буцах</button>
         </div>
         <div class="col-sm-9" ng-show="PC.tab === 4">
-            <div>
-                <img data-ng-src="http://localhost/tmp.jpg" style="width: 100%">
+            <div class="img_container">
+                <img data-ng-src="http://www.youngpreneur.com/images/business%20class%20for%20kids.jpg" style="width: 500px">
                 <a ng-repeat="face in PC.faces" class = "box" id="box{{$index}}"
-                    style=" left:{{face.faceRectangle.left - face.faceRectangle.width/2}}px;
-                            top:{{face.faceRectangle.top - face.faceRectangle.height / 2}}px;
-                            height: {{face.faceRectangle.height}}px;
-                            width:{{face.faceRectangle.width}}px"/>
+                    style=" left:{{face.faceRectangle.left}}%;
+                            top:{{face.faceRectangle.top}}%;
+                            height: {{face.faceRectangle.height}}%;
+                            width:{{face.faceRectangle.width}}%"/>
             </div>
             <br>
             <button type="button" class="btn  btn-primary" ng-click="PC.tab = 3">Буцах</button>
