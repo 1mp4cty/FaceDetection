@@ -43,12 +43,12 @@ exports.create = function (req, res, next) {
 }
 
 exports.update = function (req, res, next) {
-  delete req.body.createdAt;
-  delete req.body.updatedAt;
-
+  delete req.body.createdAt
+  delete req.body.updatedAt
+  req.body.setDataValue('photo', req.file.originalname)
   Day.update(req.body, {
     where: {
-      id: req.body.id
+      id: req.params.id
     }
   }).then(function () {
     res.json({ message: 'Success' })

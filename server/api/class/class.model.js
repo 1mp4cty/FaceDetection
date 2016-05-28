@@ -7,7 +7,8 @@ module.exports = function(sequelize, DataTypes) {
       autoIncrement: true
     },
     teacher_id: DataTypes.INTEGER,
-    name: DataTypes.STRING
+    name: DataTypes.STRING,
+    credit: DataTypes.INTEGER
   }
 );
   return classe;

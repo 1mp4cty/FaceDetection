@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
-    photo_id: DataTypes.INTEGER,
+    day_id: DataTypes.INTEGER,
     face_id: DataTypes.STRING
   }
 );

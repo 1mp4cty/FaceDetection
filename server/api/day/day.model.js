@@ -8,7 +8,8 @@ module.exports = function(sequelize, DataTypes) {
     },
     class_id: DataTypes.INTEGER,
     date: DataTypes.DATE,
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    photo: DataTypes.STRING
   }
 );
   return day;

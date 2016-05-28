@@ -40,7 +40,8 @@ var set_relations = function(){
   var User = db.user,
       Attendance = db.attendance,
       Day = db.day,
-      Class = db.class
+      Class = db.class,
+      Face = db.face
 
       User.hasMany(Class, {as: 'lessons', foreignKey: 'teacher_id'})
       Class.belongsTo(User, {as: 'teacher', foreignKey: 'teacher_id'})
@@ -53,6 +54,11 @@ var set_relations = function(){
 
       Day.hasMany(Attendance, {as: 'attended', foreignKey: 'day_id'})
       Attendance.belongsTo(Day, {as: 'day', foreignKey: 'day_id'})
+
+      Day.hasMany(Face, {as: 'faces', foreignKey: 'day_id'})
+      Face.belongsTo(Day, {as: 'day', foreignKey: 'day_id'})
+
+
 
 
 }();

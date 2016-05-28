@@ -37,7 +37,7 @@ exports['default'] = function(app, passport) {
   // app.use('/api/rating', upload.single('avatar'), require('./api/rating'))
   app.use('/api/user', require('./api/user'))
   app.use('/api/class', upload.single('avatar'), require('./api/class'))
-  app.use('/api/day', require('./api/day'))
+  app.use('/api/day', upload.single('photo'), require('./api/day'))
 
   // app.use('/api/user', require('./api/user'))
   app.route('/:url(api|auth|components|app|bower_components|assets)/*')

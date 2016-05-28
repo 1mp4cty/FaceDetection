@@ -45,7 +45,7 @@ exports.show = function(req, res, next){
         return null
       }
       else {
-        if (user.type === 'Teacher'){
+        if (user.type === 'teacher'){
           User.find({
             where: {
               id: user_id
@@ -70,9 +70,13 @@ exports.show = function(req, res, next){
             console.log('User',User.dataValues);
             res.status(200).json(User);
             return null
-          })
+          }).catch(function(err) {
+            console.log('err in User.find()',err)
+            handleError(res);
+            return null
+          });
         }
-        if (user.type === 'Student'){
+        if (user.type === 'student'){
           User.find({
             where: {
               id: user_id
@@ -90,7 +94,11 @@ exports.show = function(req, res, next){
             console.log('User',User.dataValues);
             res.status(200).json(User);
             return null
-          })
+          }).catch(function(err) {
+            console.log('err in User.find()',err)
+            handleError(res);
+            return null
+          });
         }
         // console.log('User',User.dataValues);
         // res.status(200).json(User);
