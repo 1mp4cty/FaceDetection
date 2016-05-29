@@ -44,6 +44,7 @@ exports.create = function (req, res, next) {
 exports.update = function (req, res, next) {
   delete req.body.createdAt
   delete req.body.updatedAt
+  console.log('req.file', req.file)
   req.body.setDataValue('photo', req.file.originalname)
   Day.update(req.body, {
     where: {

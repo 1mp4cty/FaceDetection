@@ -175,13 +175,24 @@
         vm.user = tea;
         vm.tab = vm.user.type;
         vm.faces = face;
+        vm.post = {
+          name: "tulgaaaaa"
+        };
         if (vm.tab === 1) {
             vm.lesson = vm.user.lessons[0];
             vm.day = vm.user.lessons[0].days[0];
         } else {
             vm.lesson = vm.user.lessons[0];
         }
-    }
 
+        vm.submit = function(){
+          send.request('/day/5', 'PUT', vm.post, true)
+            .then(function(res) {
+              $log.debug('1234 SUCCES')
+            }, function(err) {
+              $log.debug('errr', err)
+            })
+        }
+    }
 
 })();
