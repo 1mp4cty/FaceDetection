@@ -4,7 +4,7 @@
     angular
         .module('client')
         .controller('ProfileController', ProfileController);
-
+/*
     var stu = {
         fName: 'Энхсанаа',
         lName: 'Нацагдорж',
@@ -105,7 +105,7 @@
                 students: []
             }]
         }]
-    };
+    };*/
 
     var face = [{
         faceId: "4e11e7b0-761d-444b-99f5-a430cf8a8b66",
@@ -172,27 +172,41 @@
     /** @ngInject */
     function ProfileController(send, $log) {
         var vm = this;
-        vm.user = tea;
-        vm.tab = vm.user.type;
         vm.faces = face;
-        vm.post = {
-          name: "tulgaaaaa"
-        };
-        if (vm.tab === 1) {
-            vm.lesson = vm.user.lessons[0];
-            vm.day = vm.user.lessons[0].days[0];
-        } else {
-            vm.lesson = vm.user.lessons[0];
-        }
+        vm.user = [];
+        vm.lesson = [];
+        vm.day = [];
+        vm.attended = [];
 
-        vm.submit = function(){
-          send.request('/day/5', 'PUT', vm.post, true)
+        vm.getImage = function(day) {
+            if (day.photo) return "http://localhost/images/" + day.photo;
+            else return "https://www.royalacademy.org.uk/assets/placeholder-1e385d52942ef11d42405be4f7d0a30d.jpg";
+        }
+        send.request('/user/2', 'GET')
+            .then(function(res) {
+                vm.user = res;
+                if (res.type === 'Teacher') vm.user.type = 1;
+                else vm.user.type = 2;
+                vm.tab = vm.user.type;
+                if (vm.tab === 1) {
+                    vm.lesson = vm.user.lessons[0];
+                    vm.day = vm.user.lessons[0].days[0];
+                } else {
+                    vm.lesson = vm.user.lessons[0];
+                }
+            },function(err){});
+
+        vm.post = {};
+        vm.submit = function(day){
+            $log.debug(day);
+          send.request('/day/' + day.id, 'PUT', vm.post, true)
             .then(function(res) {
               $log.debug('1234 SUCCES')
             }, function(err) {
               $log.debug('errr', err)
             })
         }
+
     }
 
 })();
