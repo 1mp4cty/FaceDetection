@@ -1,5 +1,6 @@
 var sqldb = require('../../sqldb')
 var Day = sqldb.day;
+var photo = require('../photo')
 
 function handleError(res, statusCode) {
   statusCode = statusCode || 500;
@@ -42,10 +43,8 @@ exports.create = function (req, res, next) {
 }
 
 exports.update = function (req, res, next) {
-  delete req.body.createdAt
-  delete req.body.updatedAt
   console.log('req.file', req.file)
-  req.body.setDataValue('photo', req.file.originalname)
+  req.body.photo = req.file.originalname
   Day.update(req.body, {
     where: {
       id: req.params.id
@@ -57,7 +56,14 @@ exports.update = function (req, res, next) {
     console.log('err in Day.update()',err)
     handleError(res);
     return null
-  });
+  })
+  photo.detect('http://cola.unh.edu/sites/cola.unh.edu/files/styles/homepage/public/images/homepagePhotoFRLrev.jpg?itok=wdJ0UxSm', function(err, res) {
+    if (err) {
+      console.log('ERROR occured', err)
+      return
+    }
+      console.log('Incoming Response from FACE API', JSON.stringify(res, null, '\t'));
+  })
 }
 
 exports.destroy = function (req, res, next) {
